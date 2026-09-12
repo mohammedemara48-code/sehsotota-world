@@ -1,0 +1,355 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sky: #7ec8f8;
+  --color-sky-deep: #4aa3de;
+  --color-sky-dusk: #9ad4f7;
+  --color-grass: #5fbf6a;
+  --color-grass-deep: #3d9a4a;
+  --color-grass-light: #8ed88a;
+  --color-sun: #ffd166;
+  --color-sun-hot: #ff9f43;
+  --color-cream: #fff6e5;
+  --color-cream-deep: #f3e0c2;
+  --color-ink: #3e2f2f;
+  --color-ink-soft: #6b534e;
+  --color-blush: #ff8ba0;
+  --color-house-animals: #7ed957;
+  --color-house-paint: #ff6b6b;
+  --color-house-shapes: #ffd93d;
+  --color-house-music: #4d96ff;
+  --color-house-habits: #ff9f7a;
+  --color-cat: #f4a261;
+  --color-dog: #e9c46a;
+  --color-cow: #f8f4e8;
+  --color-bird: #4d96ff;
+  --color-frog: #6bcb77;
+  --color-elephant: #b8c0d0;
+  --color-wood: #c9844a;
+  --color-wood-deep: #8b5a2b;
+  --color-parent-bg: #f7f1e8;
+  --color-parent-fg: #2c2424;
+  --color-parent-muted: #6f645c;
+  --color-parent-line: #e4d8c8;
+  --color-parent-accent: #3f6f8a;
+  --font-display: "Baloo Bhaijaan 2", "Nunito", system-ui, sans-serif;
+  --font-sans: "Baloo Bhaijaan 2", "Nunito", system-ui, sans-serif;
+  --radius-house: 1.75rem;
+}
+
+@layer base {
+  html,
+  body,
+  #app {
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-sky);
+    color: var(--color-ink);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.explorer-root {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-sans);
+}
+
+.pulse-glow {
+  animation: pulse-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgb(255 209 102 / 0.55)) drop-shadow(0 10px 0 rgb(62 47 47 / 0.12));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgb(255 209 102 / 0.95)) drop-shadow(0 10px 0 rgb(62 47 47 / 0.12));
+  }
+}
+
+.bob {
+  animation: bob 3.2s ease-in-out infinite;
+}
+.bob-slow {
+  animation: bob 4.4s ease-in-out infinite;
+}
+.sway {
+  animation: sway 3.6s ease-in-out infinite;
+}
+.drift {
+  animation: drift 22s linear infinite;
+}
+.drift-alt {
+  animation: drift 28s linear infinite reverse;
+}
+.fly {
+  animation: fly 16s linear infinite;
+}
+.bounce-in {
+  animation: bounce-in 0.55s cubic-bezier(0.34, 1.46, 0.64, 1) both;
+}
+.pop-in {
+  animation: pop-in 0.35s cubic-bezier(0.34, 1.36, 0.64, 1) both;
+}
+.wiggle {
+  animation: wiggle 0.42s ease-in-out;
+}
+.chew {
+  animation: chew 0.28s ease-in-out 3;
+}
+.wave-arm {
+  transform-box: fill-box;
+  transform-origin: 30% 80%;
+  animation: wave 1.15s ease-in-out infinite;
+}
+.pressable {
+  transition: transform 150ms ease-out;
+}
+.pressable:active {
+  transform: scale(0.96);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes drift {
+  from {
+    transform: translateX(-20%);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+@keyframes fly {
+  0% {
+    transform: translate(-10vw, 0);
+  }
+  50% {
+    transform: translate(50vw, -18px);
+  }
+  100% {
+    transform: translate(110vw, 8px);
+  }
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.2) translateY(40px);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.12) translateY(-8px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+@keyframes pop-in {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(-10px) rotate(-4deg);
+  }
+  75% {
+    transform: translateX(10px) rotate(4deg);
+  }
+}
+@keyframes chew {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.92);
+  }
+}
+@keyframes wave {
+  0%,
+  100% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(-28deg);
+  }
+}
+@keyframes ring-pulse {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.18);
+    opacity: 0;
+  }
+}
+.ring-pulse {
+  animation: ring-pulse 1.6s ease-out infinite;
+}
+
+.bubble-rise {
+  animation: bubble-rise linear forwards;
+  pointer-events: auto;
+}
+@keyframes bubble-rise {
+  0% {
+    transform: translate(-50%, 0) scale(0.55);
+    opacity: 0.95;
+  }
+  12% {
+    transform: translate(-50%, -8vh) scale(1);
+  }
+  100% {
+    transform: translate(calc(-50% + var(--drift, 12px)), -108vh) scale(1.08);
+    opacity: 0;
+  }
+}
+
+.star-burst span {
+  position: absolute;
+  inset: 0 auto auto 0;
+  animation: star-fly 0.7s ease-out forwards;
+}
+@keyframes star-fly {
+  0% {
+    transform: translate(0, 0) scale(0.4) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1) rotate(80deg);
+    opacity: 0;
+  }
+}
+
+.xylo-key {
+  transition:
+    transform 80ms ease-out,
+    filter 80ms ease-out;
+  transform-origin: top center;
+}
+.xylo-key:active,
+.xylo-key.is-down {
+  transform: translateY(10px) scaleY(0.96);
+  filter: brightness(1.08);
+}
+
+.house-hit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.12rem;
+  filter: drop-shadow(0 8px 0 rgb(62 47 47 / 0.14));
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  touch-action: manipulation;
+}
+.house-hit:active {
+  transform: scale(0.96) translateY(4px);
+}
+.house-hit img {
+  max-height: 72%;
+  width: auto;
+  max-width: 94%;
+  object-fit: contain;
+  object-position: bottom;
+}
+.nameplate {
+  flex-shrink: 0;
+  min-width: 4.4rem;
+  border-radius: 0.95rem;
+  background: var(--color-cream);
+  padding: 0.28rem 0.45rem 0.34rem;
+  color: var(--color-ink);
+  box-shadow: 0 3px 0 #e4d8c8;
+}
+
+.village-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 0.25rem 0.4rem;
+}
+@media (min-width: 700px), (orientation: landscape) {
+  .village-grid {
+    gap: 0.4rem 0.8rem;
+  }
+}
+
+.hill {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  border-radius: 50% 50% 0 0;
+}
+
+.paint-region {
+  cursor: pointer;
+  transition: fill 280ms ease;
+}
+
+.gate-progress {
+  transition: stroke-dashoffset 80ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bob,
+  .bob-slow,
+  .sway,
+  .drift,
+  .drift-alt,
+  .fly,
+  .pulse-glow,
+  .wave-arm,
+  .ring-pulse {
+    animation: none;
+  }
+}
